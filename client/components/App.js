@@ -15,18 +15,16 @@ export default class App extends Component {
       score: 0
     };
   }
-
- selectQuestion(question) {
-   this.setState({currentQuestion: question})
+ selectQuestion(clues) {
+  this.setState({currentQuestion: clues})
+   var dollar = clues.value;
+   clues.value = ""
+   this.money(dollar, clues)
  }
 
- recordResponse(e) {
-  this.setState({currentQuestion: question})
-}
-
-submitResponse(e) {
-  this.setState({currentQuestion: question})
-}
+ money(dollarVal, objectReference)  {
+    console.log(arguments)
+ }
 
 
 // function to update the state of the current question
@@ -42,12 +40,12 @@ submitResponse(e) {
   //console.log(this)
     return (
       <div id={'app'}>
-        <Gameboard categories={this.state.results} id={'gameboard'} currentQuestion={this.state.currentQuestion} selectQuestion={this.selectQuestion.bind(this)} answeredQuestions={this.state.answeredQuestions}/>
+        <Gameboard categories={this.state.results} id={'gameboard'} 
+        currentQuestion={this.state.currentQuestion} selectQuestion={this.selectQuestion.bind(this)} answeredQuestions={this.state.answeredQuestions}/>
         // pass down on click function to categories -> category -> clue
         // in clue, on click, run function, pass up current question, hiding the clicked element (set value to empty)
-        // 
         <Scoreboard score = {this.state.score}/>
-        <Response recordResponse={this.recordResponse.bind(this)} submitResponse={this.submitResponse.bind(this)}/> // passing down update score function.bind, also 
+        <Response money={this.money.bind(this)} /> // passing down update score function.bind, also 
         // passing down this.state current question
       </div>
     );

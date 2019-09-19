@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 
 const Clue = props => {
   //console.log(props.clueObject.question)
-  //console.log(props.selectQuestion)
+  //console.log(props)
   // show $ value of clue OR
   // the Clue question itself OR
   // empty screen if it was already answered
-
   return (
     <div className='clueValue' onClick={() => props.selectQuestion(props.clueObject)}>${props.clueObject.value}
     </div>

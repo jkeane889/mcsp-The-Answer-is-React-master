@@ -11,24 +11,28 @@ export default class Response extends Component {
   }
   recordResponse(newText) {
     this.setState({ userResponse: newText });
-    console.log(this.state.userResponse)
+    this.submitResponse(this.state.userResponse)
   }
+
   submitResponse(event) {
+    console.log(this.state.userResponse)
     // this function should fire when the user fills the response and hits 'enter'
       // Is the user response correct? 
       // yes/no? What should happen?
   }
+
   render(){
     return (
       <div id={'response'} data-testid="response">
-        <input
-          type='text'
-          placeholder='Answers go here!'
-          // handle data change
-          // handle when 'enter' is hit
-          onChange= {this.recordResponse.bind(this)}
-        >
-        </input>
+        <form onSubmit={this.submitResponse.bind(this)}>
+          <input
+            type='text'
+            placeholder='Answers go here!'
+            // handle data change
+            // handle when 'enter' is hit
+            onChange= {this.recordResponse.bind(this)}>
+          </input>   
+        </form>
       </div>
     )
   }
