@@ -10,7 +10,7 @@ const Scoreboard = props => {
     passing.
   */
   return (
-    <div id={'scoreboard'} data-testid="scoreboard">
+    <div id={'scoreboard'}>
       ${props.score}
     </div>
   );

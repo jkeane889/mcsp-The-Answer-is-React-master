@@ -11,6 +11,7 @@ export default class Response extends Component {
   }
   recordResponse(newText) {
     this.setState({ userResponse: newText });
+    console.log(this.state.userResponse)
   }
   submitResponse(event) {
     // this function should fire when the user fills the response and hits 'enter'
@@ -25,6 +26,7 @@ export default class Response extends Component {
           placeholder='Answers go here!'
           // handle data change
           // handle when 'enter' is hit
+          onChange= {this.recordResponse.bind(this)}
         >
         </input>
       </div>
