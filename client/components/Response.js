@@ -10,30 +10,35 @@ export default class Response extends Component {
     this.recordResponse = this.recordResponse.bind(this);
   }
   recordResponse(newText) {
-    this.setState({ userResponse: newText });
-    this.submitResponse(this.state.userResponse)
+    this.setState({ userResponse: event.target.value })
   }
 
   submitResponse(event) {
-    console.log(this.state.userResponse)
-    // this function should fire when the user fills the response and hits 'enter'
-      // Is the user response correct? 
-      // yes/no? What should happen?
+    event.preventDefault();
+
+    if (this.props.currentQuestion.value) { 
+      if(this.state.userResponse.toLowerCase() === this.props.currentQuestion.answer.toLowerCase()) {
+        this.props.changeScore(this.props.currentQuestion.value)
+      } else if(this.state.userResponse !== this.props.currentQuestion.answer) {
+        this.props.changeScore(-this.props.currentQuestion.value)
+      }
+
+      this.props.addToAnsweredQuestion(this.props.currentQuestion.id);
+      this.setState({userResponse: ''})
+    
+    }
   }
 
   render(){
     return (
-      <div id={'response'} data-testid="response">
-        <form onSubmit={this.submitResponse.bind(this)}>
+        <form id={'response'} onSubmit={this.submitResponse.bind(this)}>
           <input
             type='text'
             placeholder='Answers go here!'
-            // handle data change
-            // handle when 'enter' is hit
-            onChange= {this.recordResponse.bind(this)}>
+            onChange= {this.recordResponse}
+            value={this.state.userResponse}>
           </input>   
         </form>
-      </div>
     )
   }
 }

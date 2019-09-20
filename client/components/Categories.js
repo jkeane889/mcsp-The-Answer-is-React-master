@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Category from './Category';
 
 const Categories = props => {
-  //console.log(props)
   return (
     <div id={'categories'}>
       {props.categories.map(category => 

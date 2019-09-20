@@ -15,8 +15,7 @@ if(props.currentQuestion.question) {
     selectQuestion={props.selectQuestion} 
     answeredQuestions={props.answeredQuestions}/>
     </div>
-  )
-}
+  )}
 };
 
 Gameboard.propTypes = {
